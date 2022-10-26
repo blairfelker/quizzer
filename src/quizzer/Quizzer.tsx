@@ -31,7 +31,7 @@ export const Quizzer = () => {
     }
 
     function addQuiz(title: string, body: string) {
-        const newQuiz: Quiz = {id: quizzes.length,
+        const newQuiz: Quiz = {id: 6, //THIS LINE SUCKS
             title: title,
             body: body,
             published: false,
