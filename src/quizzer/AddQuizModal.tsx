@@ -5,9 +5,9 @@ export const AddQuizModal = ({
     show,
     handleClose,
     addQuiz
-}: {
-}) => {
+}: {show: boolean, handleClose: Function, addQuiz: Function}) => {
     const [title, setTitle] = useState<string>("Example Quiz");
+    const [body, setBody] = useState<string>("Example Quiz");
 
     const saveChanges = () => {
         addQuiz(title, body);
@@ -18,7 +18,7 @@ export const AddQuizModal = ({
 
     return (
         <div>
-            <Modal show={show} onHide={handleClose} animation={false}>
+            <Modal show={show} onHide={() => handleClose} animation={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add New Quiz</Modal.Title>
                 </Modal.Header>
@@ -36,7 +36,9 @@ export const AddQuizModal = ({
                             as="textarea"
                             rows={3}
                             value={body}
-                            onChange={}
+                            onChange={(
+                                e: React.ChangeEvent<HTMLInputElement>
+                            ) => setBody(e.target.value)}
                         ></Form.Control>
                     </Form.Group>
                 </Modal.Body>

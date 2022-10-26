@@ -22,7 +22,7 @@ const QUIZZES = sample.map(
 
 export const Quizzer = () => {
     const [quizzes, setQuizzes] = useState<Quiz[]>(QUIZZES);
-    const [showAddModal, setShowAddModal] = useState(false);
+    const [showAddModal, setShowAddModal] = useState<boolean>(false);
 
     function editQuiz(qId: number, newQuiz: Quiz) {
         setQuizzes(
@@ -31,6 +31,11 @@ export const Quizzer = () => {
     }
 
     function addQuiz(title: string, body: string) {
+        const newQuiz: Quiz = {id: quizzes.length,
+            title: title,
+            body: body,
+            published: false,
+            questionList: []};
         setQuizzes([...quizzes, newQuiz]);
     }
 
